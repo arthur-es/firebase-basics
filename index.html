@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Firebase TodoList</title>
+    <link rel="shortcut icon" href="img/todoListFavicon.png" type="image/x-icon">
+</head>
+<body>
+    <div id="app">
+        <div class="center">
+            <img src="img/todoList.png" alt="Logo">
+        </div>
+
+        <div id="auth" class="center">
+            <form id="authForm">
+                <h3 id="authFormTitle">Acesse a sua conta para continuar</h3>
+
+                <label for="email" >E-mail</label>
+                <input type="email" placeholder="E-mail" id="email">
+
+                <label for="password">Senha</label>
+                <input type="password" placeholder="Senha" id="password">
+
+                <button type="submit" id="submitAuthForm">Acessar</button>
+            </form>
+
+            <p id="register">
+                Não possui uma conta?
+                <button onclick="toggleToRegister()" class="alternative">Cadastrar uma nova conta</button>
+            </p>
+
+
+            <p id="access" class="startHidden">
+                Já possui uma conta?
+                <button onclick="toggleToAccess()" class="alternative">Acesse a sua conta</button>
+            </p>
+        </div>
+    </div>
+</body>
+</html>
