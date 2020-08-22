@@ -5,11 +5,11 @@ authForm.onsubmit = function (event) {
 
     if(authForm.submitAuthForm.innerHTML == 'Acessar'){
         firebase.auth().signInWithEmailAndPassword(authForm.email.value, authForm.password.value).catch(function(error) {
-            console.error(error)
+            console.error(error);
         });
     } else if( authForm.submitAuthForm.innerHTML == 'Cadastrar conta'){
         firebase.auth().createUserWithEmailAndPassword(authForm.email.value, authForm.password.value).catch(function(error) {
-            console.error(error)
+            console.error(error);
         });
     }
 }
@@ -24,10 +24,21 @@ firebase.auth().onAuthStateChanged(function(user){
     }
 })
 
-// Funcao que permite ao usuario sair da conta dele
+// Função que permite ao usuario sair da conta dele
 function signOut() {
     firebase.auth().signOut().catch(function (error) {
-        console.error('Falha ao sair da conta', error)
+        console.error('Falha ao sair da conta', error);
+    }); 
+}
+
+// Função que envia um e-mail para o usuario verificá-lo
+function sendEmailVerification() {
+    const user = firebase.auth().currentUser;
+
+    user.sendEmailVerification().then(function () {
+        alert(`E-mail de verificação foi enviado para ${user.email}`)
+    }).catch(function(error) {
+        alert(`Ocorreu um erro ao enviar o e-mail de verificação`)
+        console.log(error)
     });
-    
 }

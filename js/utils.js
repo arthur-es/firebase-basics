@@ -9,6 +9,8 @@ const signOutBtn = document.getElementById("signOut");
 const auth = document.getElementById("auth");
 const userContent = document.getElementById("userContent");
 const userEmail = document.getElementById("userEmail");
+const userEmailVerified = document.getElementById("userEmailVerified");
+const sendEmailVerificationDiv = document.getElementById("sendEmailVerificationDiv");
 
 // Simplifica a adição de elementos da página
 function showItem(element){
@@ -38,9 +40,17 @@ function toggleToAccess(){
 
 // Mostrar conteudo para users autenticados
 function showUserContent(user) {
+    userEmail.innerHTML = user.email;
     hideItem(auth);
     showItem(userContent);
-    userEmail.innerHTML = user.email;
+    if(user.emailVerified === true) {
+        userEmailVerified.innerHTML = 'E-mail verificado'
+        hideItem(sendEmailVerificationDiv)
+    } else {
+        userEmailVerified.innerHTML = 'E-mail não verificado!'
+        showItem(sendEmailVerificationDiv)
+    }
+ 
 }
 
 // Mostrar conteudo para users não autenticados
