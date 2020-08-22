@@ -50,7 +50,6 @@ function showUserContent(user) {
         userEmailVerified.innerHTML = 'E-mail não verificado!'
         showItem(sendEmailVerificationDiv)
     }
- 
 }
 
 // Mostrar conteudo para users não autenticados
@@ -61,3 +60,7 @@ function showAuth() {
     showItem(auth);
 }
 
+// Atributos extras de config de e-mail
+const actionCodeSettions = {
+    url: 'http://127.0.0.1:5500'
+}

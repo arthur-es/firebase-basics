@@ -38,7 +38,7 @@ function sendEmailVerification() {
     showItem(loading);
     const user = firebase.auth().currentUser;
 
-    user.sendEmailVerification().then(function () {
+    user.sendEmailVerification(actionCodeSettions).then(function () {
         alert(`E-mail de verificação foi enviado para ${user.email}`)
     }).catch(function(error) {
         alert(`Ocorreu um erro ao enviar o e-mail de verificação`)
