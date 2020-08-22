@@ -6,10 +6,12 @@ authForm.onsubmit = function (event) {
     if(authForm.submitAuthForm.innerHTML == 'Acessar'){
         firebase.auth().signInWithEmailAndPassword(authForm.email.value, authForm.password.value).catch(function(error) {
             console.error(error);
+            hideItem(loading)
         });
     } else if( authForm.submitAuthForm.innerHTML == 'Cadastrar conta'){
         firebase.auth().createUserWithEmailAndPassword(authForm.email.value, authForm.password.value).catch(function(error) {
             console.error(error);
+            hideItem(loading)
         });
     }
 }
@@ -33,6 +35,7 @@ function signOut() {
 
 // Função que envia um e-mail para o usuario verificá-lo
 function sendEmailVerification() {
+    showItem(loading);
     const user = firebase.auth().currentUser;
 
     user.sendEmailVerification().then(function () {
@@ -40,5 +43,7 @@ function sendEmailVerification() {
     }).catch(function(error) {
         alert(`Ocorreu um erro ao enviar o e-mail de verificação`)
         console.log(error)
+    }).finally(function() {
+        hideItem(loading);
     });
 }
