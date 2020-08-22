@@ -1,6 +1,8 @@
 //Referências
 const authForm = document.getElementById("authForm");
 const authFormTitle = document.getElementById("authFormTitle");
+const loading = document.getElementById("loading");
+// const submitAuthForm = document.getElementById("submitAuthForm");
 const register = document.getElementById("register");
 const access = document.getElementById("access");
 
