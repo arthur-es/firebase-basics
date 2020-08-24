@@ -62,8 +62,6 @@ button.alternative {
     background-color: #44c;
 }
 
-
-
 p {
     margin: 0px;
 }
@@ -73,4 +71,9 @@ p {
     top: calc(50% - 100px);
     left: calc(50% - 100px);
     z-index: 2;
+}
+
+#auth img {
+    cursor: pointer;
+    margin: 4px;
 }

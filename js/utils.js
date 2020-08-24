@@ -11,6 +11,9 @@ const userContent = document.getElementById("userContent");
 const userEmail = document.getElementById("userEmail");
 const userEmailVerified = document.getElementById("userEmailVerified");
 const sendEmailVerificationDiv = document.getElementById("sendEmailVerificationDiv");
+const passwordReset = document.getElementById("passwordReset");
+const userName = document.getElementById("userName");
+const userImg = document.getElementById("userImg");
 
 // Simplifica a adição de elementos da página
 function showItem(element){
@@ -27,6 +30,7 @@ function toggleToRegister(){
     authFormTitle.innerHTML = "Insira seus dados para se cadastrar";
 
     hideItem(register);
+    hideItem(passwordReset);
     showItem(access);
 }
 
@@ -35,14 +39,12 @@ function toggleToAccess(){
     authFormTitle.innerHTML = "Acesse a sua conta para continuar";
 
     hideItem(access);
+    showItem(passwordReset);
     showItem(register);
 }
 
 // Mostrar conteudo para users autenticados
 function showUserContent(user) {
-    userEmail.innerHTML = user.email;
-    hideItem(auth);
-    showItem(userContent);
     if(user.emailVerified === true) {
         userEmailVerified.innerHTML = 'E-mail verificado'
         hideItem(sendEmailVerificationDiv)
@@ -50,6 +52,13 @@ function showUserContent(user) {
         userEmailVerified.innerHTML = 'E-mail não verificado!'
         showItem(sendEmailVerificationDiv)
     }
+
+    userImg.src = user.photoURL ? user.photoURL : 'img/unknownUser.png'
+    userName.innerHTML = user.displayName;
+
+    userEmail.innerHTML = user.email;
+    hideItem(auth);
+    showItem(userContent);
 }
 
 // Mostrar conteudo para users não autenticados

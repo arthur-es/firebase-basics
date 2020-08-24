@@ -30,6 +30,11 @@
                 <button type="submit" id="submitAuthForm">Acessar</button>
             </form>
 
+            <p id="passwordReset">
+                Esqueceu a senha?
+                <button onclick="sendPasswordResetEmail()" class="alternative">Redefinir a minha senha</button>
+            </p>
+
             <p id="register">
                 Não possui uma conta?
                 <button onclick="toggleToRegister()" class="alternative">Cadastrar uma nova conta</button>
@@ -40,12 +45,18 @@
                 Já possui uma conta?
                 <button onclick="toggleToAccess()" class="alternative">Acesse a sua conta</button>
             </p>
+
+            <p id="access" >
+                Ou acesse usando:
+                <img src="/img/google.png" alt="Logotipo do Google" onclick="signInWithGoogle()">
+            </p>
         </div>
 
         <div id="userContent" class="startHidden center">
             <hr>
             <div class="userInfo">
-                <p>Usuário está autenticado</p>
+                <img id="userImg">
+                <p id="userName"></p>
                 <p id="userEmail"></p>
                 <p id="userEmailVerified"></p>
                 <div id="sendEmailVerificationDiv">

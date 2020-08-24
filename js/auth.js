@@ -47,3 +47,30 @@ function sendEmailVerification() {
         hideItem(loading);
     });
 }
+
+// Função que possibilita o usuário redefinir a senha dele
+function sendPasswordResetEmail() {
+    const email = prompt('Informe o seu endereço de e-mail', authForm.email.value);
+    if(email){
+        showItem(loading);
+        firebase.auth().sendPasswordResetEmail(email, actionCodeSettions).then(function() {
+            alert(`E-mail de redefinição de senha foi enviado para ${email}`);
+        }).catch(function(error){
+            alert("Houve um erro ao tentar enviar o e-mail de redefinição de senha")
+            console.error(error)
+        }).finally(function() {
+            hideItem(loading)
+        });
+    }
+}
+
+//Função que permite a auth pelo google
+
+function signInWithGoogle(){
+    showItem(loading);
+    firebase.auth().signInWithPopup(new firebase.auth.GoogleAuthProvider()).catch(function (error){
+        alert('Houve um erro ao fazer o autenticar usando o google');
+        console.log(error);
+        hideItem(loading);
+    })
+}
