@@ -1,0 +1,84 @@
+body {
+    color: #444444;
+    font-family: Tahoma;
+
+    display: flex;
+    height: 100vh;
+    overflow-y: hidden;
+}
+
+#app {
+    width: 512px;
+    margin: auto;
+
+    box-shadow: 4px 4px 20px #888888;
+
+    padding: 20px;
+
+    border-radius: 20px;;
+}
+
+.center{
+    text-align: center;
+
+}
+
+.startHidden{
+    display: none;
+}
+
+h3 {
+    margin: 4px;
+    margin-top: 20px;
+    font-weight: normal;
+}
+
+input {
+    width: 80%;
+    margin: 4px;
+    padding: 4px 8px;
+    font-size: 15px;
+    border-radius: 8px;
+    border: 1px solid #ccc;
+    outline: none;
+}
+
+button {
+    background-color: #4c4;
+    color: white;
+    font-size: 15px;
+    border: none;
+    padding: 6px 16px;
+    border-radius: 8px;
+    margin: 4px;
+}
+
+button:hover {
+    cursor: pointer;
+    opacity: 0.8;
+}
+
+button.alternative {
+    background-color: #44c;
+}
+
+button.danger {
+    background-color: #c44;
+}
+
+p {
+    margin: 0px;
+}
+
+#loading {
+    position: absolute;
+    top: calc(50% - 100px);
+    left: calc(50% - 100px);
+    z-index: 2;
+}
+
+#auth img {
+    cursor: pointer;
+    margin: 4px;
+    border-radius: 50%;
+}
