@@ -62,6 +62,10 @@ button.alternative {
     background-color: #44c;
 }
 
+button.danger {
+    background-color: #c44;
+}
+
 p {
     margin: 0px;
 }
@@ -76,4 +80,5 @@ p {
 #auth img {
     cursor: pointer;
     margin: 4px;
+    border-radius: 50%;
 }

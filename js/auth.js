@@ -74,3 +74,42 @@ function signInWithGoogle(){
         hideItem(loading);
     })
 }
+
+// Função que permite atualizar nomes de usuários
+function updateUserName() {
+    const newUserName = prompt('Informe um novo nome de usuário: ', userName.innerHTML);
+    if(newUserName && newUserName != ''){
+        userName.innerHTML = newUserName;
+        showItem(loading);
+        firebase.auth().currentUser.updateProfile({
+            displayName: newUserName
+        }).catch(function (error){
+            alert('Falha ao atualizar username');
+            console.log(error);
+        }).finally(function(){
+            hideItem(loading)
+        })
+    } else {
+        alert('Nome de usuário não pode ficar em branco');
+    }
+}
+
+// Função que permite deletar a conta do usuário
+function deleteUserAccount(){
+    const confirmation = confirm('Realmente deseja excluir a sua conta?');
+
+    if(confirmation){
+        showItem(loading);
+        firebase.auth().currentUser.delete().then(
+            function () {
+                alert("Conta deletada com sucesso!");
+            }
+        ).catch(function(error){
+            hideItem(loading);
+            console.log(error);
+            alert('Erro ao deletar a sua conta');
+        }).finally(function(){
+            hideItem(loading);
+        })
+    }
+}
