@@ -73,3 +73,29 @@ function showAuth() {
 const actionCodeSettions = {
     url: 'http://127.0.0.1:5500'
 }
+
+// Centralizar e traduzir erros
+function showError(prefix, error){
+    console.error(error.code)
+
+    hideItem(loading);
+
+    switch(error.code){
+        case 'auth/invalid-email': alert(`${prefix} E-mail inválido.`)
+        break;
+
+        case 'auth/wrong-password': alert(`${prefix} Senha inválida.`)
+        break;
+
+        case 'auth/weak-password': alert(`${prefix} Senha fraca. A senha deve ter no mínimo 6 caracteres.`)
+        break;
+        
+        case 'auth/email-already-in-use': alert(`${prefix} O e-mail já está sendo usado. Recupere a sua senha.`)
+        break;
+        
+        case 'auth/popup-closed-by-user': alert(`${prefix} O popup foi fechado antes de concluir a autenticação.`)
+        break;
+
+        default: alert(`${prefix} ${error.message}`)
+    }
+}
