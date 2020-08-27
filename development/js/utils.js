@@ -2,7 +2,6 @@
 const authForm = document.getElementById("authForm");
 const authFormTitle = document.getElementById("authFormTitle");
 const loading = document.getElementById("loading");
-// const submitAuthForm = document.getElementById("submitAuthForm");
 const register = document.getElementById("register");
 const access = document.getElementById("access");
 const signOutBtn = document.getElementById("signOut");
@@ -14,6 +13,11 @@ const sendEmailVerificationDiv = document.getElementById("sendEmailVerificationD
 const passwordReset = document.getElementById("passwordReset");
 const userName = document.getElementById("userName");
 const userImg = document.getElementById("userImg");
+
+const todoForm = document.getElementById("todoForm");
+const todoCount = document.getElementById("todoCount");
+const ulTodoList = document.getElementById("ulTodoList");
+
 
 // Simplifica a adição de elementos da página
 function showItem(element){
@@ -58,6 +62,11 @@ function showUserContent(user) {
 
     userEmail.innerHTML = user.email;
     hideItem(auth);
+
+    dbRefUsers.child(firebase.auth().currentUser.uid).on('value', function(dataSnapshot) {
+        fillTodoList(dataSnapshot)
+    });
+
     showItem(userContent);
 }
 
@@ -99,3 +108,7 @@ function showError(prefix, error){
         default: alert(`${prefix} ${error.message}`)
     }
 }
+
+const database = firebase.database();
+
+const dbRefUsers = database.ref('users');
