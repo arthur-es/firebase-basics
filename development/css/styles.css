@@ -81,3 +81,26 @@ p {
     margin: 4px;
     border-radius: 50%;
 }
+
+ul {
+    list-style-type: none;
+    padding: 0px;
+    text-align: left;
+}
+
+li {
+    padding: 8px;
+}
+
+li:hover {
+    background-color: #ccc;
+}
+
+.todoBtn {
+    float: right;
+    margin: 0px;
+    margin-left: 4px;
+
+    position: relative;
+    bottom: 5px;
+}
