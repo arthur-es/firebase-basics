@@ -30,6 +30,21 @@ function fillTodoList(dataSnaptshot){
 
         li.appendChild(spanLi);
 
+        const liRemoveBtn = document.createElement('button');
+        liRemoveBtn.appendChild(document.createTextNode('Excluir'));
+        liRemoveBtn.setAttribute('onclick', `removeTodo("${item.key}")`);
+        liRemoveBtn.setAttribute('class', 'danger todoBtn');
+        li.appendChild(liRemoveBtn);
+
         ulTodoList.appendChild(li);
     });
+}
+
+function removeTodo(key){
+    // const confirmation = confirm('Realmente deseja remover a tarefa?');
+    // if(confirmation){
+        dbRefUsers.child(firebase.auth().currentUser.uid).child(key).remove().catch(function (error){
+            showError('Erro ao excluir a tarefa: ', error);
+        })
+    // }
 }
