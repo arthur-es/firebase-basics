@@ -19,6 +19,8 @@ const todoCount = document.getElementById("todoCount");
 const ulTodoList = document.getElementById("ulTodoList");
 
 const search = document.getElementById("search");
+const progressFeedback = document.getElementById("progressFeedback");
+const progress = document.getElementById("progress");
 
 // Simplifica a adição de elementos da página
 function showItem(element){
