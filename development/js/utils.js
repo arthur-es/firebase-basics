@@ -18,6 +18,7 @@ const todoForm = document.getElementById("todoForm");
 const todoCount = document.getElementById("todoCount");
 const ulTodoList = document.getElementById("ulTodoList");
 
+const search = document.getElementById("search");
 
 // Simplifica a adição de elementos da página
 function showItem(element){
@@ -63,11 +64,30 @@ function showUserContent(user) {
     userEmail.innerHTML = user.email;
     hideItem(auth);
 
+    getDefaultTodoList();
+
+    search.onkeyup = function() {
+        if(search.value != ""){
+            dbRefUsers.child(user.uid)
+            .orderByChild('name') // Ordena as tarefas pelo nome da tarefa
+            .startAt(search.value).endAt(search.value + '\uf8ff') // Delimita os resultados (nomes de tarefas que começam com o termo pesquisado)
+            .once('value').then(function(dataSnapshot) { // Busca tarefas filtradas somente uma vez
+                fillTodoList(dataSnapshot)
+            });
+        } else {
+            getDefaultTodoList();
+        }
+    }
+
+    showItem(userContent);
+}
+
+// Busca tarefas em tempo real (listagem padrao)
+function getDefaultTodoList(){
+    
     dbRefUsers.child(firebase.auth().currentUser.uid).on('value', function(dataSnapshot) {
         fillTodoList(dataSnapshot)
     });
-
-    showItem(userContent);
 }
 
 // Mostrar conteudo para users não autenticados
