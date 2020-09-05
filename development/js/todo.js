@@ -65,7 +65,8 @@ function updateTodo(key){
     const newTodoName = prompt(`Qual é o novo nome da tarefa "${selectedItem.innerHTML}"?`, selectedItem.innerHTML);
     if(newTodoName != ''){
         const data = {
-            name: newTodoName
+            name: newTodoName,
+            nameLowerCase: newTodoName.toLowerCase()
         }
         dbRefUsers.child(firebase.auth().currentUser.uid).child(key).update(data).then(function() {
             console.log('Atualizado...');
