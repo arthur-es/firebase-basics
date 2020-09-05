@@ -68,9 +68,10 @@ function showUserContent(user) {
 
     search.onkeyup = function() {
         if(search.value != ""){
+            const searchText = search.value
             dbRefUsers.child(user.uid)
-            .orderByChild('name') // Ordena as tarefas pelo nome da tarefa
-            .startAt(search.value).endAt(search.value + '\uf8ff') // Delimita os resultados (nomes de tarefas que começam com o termo pesquisado)
+            .orderByChild('nameLowerCase') // Ordena as tarefas pelo nome da tarefa
+            .startAt(searchText).endAt(searchText + '\uf8ff') // Delimita os resultados (nomes de tarefas que começam com o termo pesquisado)
             .once('value').then(function(dataSnapshot) { // Busca tarefas filtradas somente uma vez
                 fillTodoList(dataSnapshot)
             });
