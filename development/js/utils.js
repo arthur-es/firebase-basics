@@ -19,8 +19,12 @@ const todoCount = document.getElementById("todoCount");
 const ulTodoList = document.getElementById("ulTodoList");
 
 const search = document.getElementById("search");
+
 const progressFeedback = document.getElementById("progressFeedback");
 const progress = document.getElementById("progress");
+let playPauseBtn = document.getElementById("playPauseBtn");
+let cancelBtn = document.getElementById("cancelBtn");
+
 
 // Simplifica a adição de elementos da página
 function showItem(element){
@@ -126,6 +130,9 @@ function showError(prefix, error){
         break;
         
         case 'auth/popup-closed-by-user': alert(`${prefix} O popup foi fechado antes de concluir a autenticação.`)
+        break;
+
+        case 'storage/canceled': alert(`${prefix} O upload foi cancelado pelo usuário.`)
         break;
 
         default: alert(`${prefix} ${error.message}`)
